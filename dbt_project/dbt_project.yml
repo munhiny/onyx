@@ -1,0 +1,35 @@
+name: 'data_engineer_challenge'
+version: '1.0.0'
+config-version: 2
+
+profile: 'data_engineer_challenge'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+asset-paths: ["assets"]
+docs-paths: ["docs"]
+
+target-path: "target"
+clean-targets:
+    - "target"
+    - "dbt_packages"
+
+models:
+  data_engineer_challenge:
+    silver:
+      +target_schema: silver
+      +materialized: table
+      tags: silver
+    gold:
+      +target_schema: gold
+      +materialized: view
+      tags: gold
+snapshots:
+  data_engineer_challenge:
+    silver:
+      +target_schema: silver
+      +materialized: table
+      tags: silver_snap

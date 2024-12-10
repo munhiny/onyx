@@ -1,0 +1,27 @@
+models:
+  - name: agg_daily_turnover_revenue
+    description: Daily turnover and revenue summary.
+    columns:
+      - name: bus_date
+        description: "Business date of the transaction"
+      - name: total_turnover
+        description: total turnover
+      - name: total_revenue
+        description: total revenue
+  - name: agg_revenue_by_egm_by_venue
+    description: total revenue (gmp_sum) by EGM and by venue.
+    columns:
+      - name: egm_description
+        description: electronic game machine description
+      - name: venue_code
+        description: venue code
+      - name: total_revenue
+        description: total revenue
+  - name: agg_turnover_by_venue
+    description: Total turnover amount for each venue.
+    columns:
+      - name: total_turnover
+        description: total turnover
+      - name: venue_code
+        description: venue code
+      

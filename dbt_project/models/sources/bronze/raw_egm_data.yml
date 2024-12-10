@@ -1,0 +1,54 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: onyx        
+    schema: bronze
+    tables:
+      - name: landing_egm_data
+        description: "Raw EGM data from the landing zone"
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - bus_date
+                - egm_description
+                - manufacturer
+                - venue_code
+                - fp
+        columns:
+          - name: bus_date
+            description: "Business date of the transaction"
+            tests:
+              - not_null
+              - is_date_format:
+                  date_format: '%Y-%m-%d'
+          - name: venue_code
+            description: "Venue code"
+            tests:
+              - not_null
+          - name: egm_description
+            description: "EGM description"
+            tests:
+              - not_null
+          - name: manufacturer
+            description: "Manufacturer of machine"
+            tests:
+              - not_null
+          - name: fp
+            description: "FP code"
+            tests:
+              - not_null
+          - name: turnover_sum
+            description: "Turnover sum"
+            tests:
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: true
+          - name: gmp_sum
+            description: "Revenue"
+          - name: games_played_sum
+            description: "Total games played"
+            tests:
+              - dbt_utils.accepted_range:
+                  min_value: 0
+                  inclusive: true

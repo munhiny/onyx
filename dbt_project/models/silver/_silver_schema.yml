@@ -1,0 +1,28 @@
+models:
+  - name: silver_egm_data
+    description: "Silver layer for EGM data"
+    columns:
+      - name: bus_date
+        description: "Business date of the transaction"
+      - name: venue_code
+        description: "Venue code"
+        tests:
+          - not_null
+      - name: egm_description
+        description: "EGM description"
+        tests:
+          - not_null
+      - name: manufacturer
+        description: "Manufacturer of machine"
+        tests:
+          - not_null
+      - name: fp
+        description: "FP code"
+        tests:
+          - not_null
+      - name: turnover_sum
+        description: "Turnover sum"
+      - name: gmp_sum
+        description: "Revenue"
+      - name: games_played_sum
+        description: "Total games played"
