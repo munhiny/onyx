@@ -25,7 +25,7 @@ brew install poetry
 
 Navigate to the project directory:
 ```bash
-cd onyx_challenge
+cd onyx
 ```
 
 Install dependencies:
@@ -37,6 +37,7 @@ Install dbt Dependencies
 cd dbt_project
 dbt deps
 ```
+Generate own .env files with relevant database access config to postgres
 
 ### 2. Run pipeline
 ```bash
