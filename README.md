@@ -57,13 +57,15 @@ The csv files should be in the root directory of the project. We can run a diffe
 cd dbt_project
 poetry run python pipeline.py -f "Data Engineer Challenge_input.csv"
 ```
-### 3. Generate dbt docs
+### 3. DBT Docs
+
+Generate dbt docs
 
 ```bash
 poetry run python pipeline.py -g
 ```
 
-serve docs
+Serve docs
 
 ```bash
 poetry run python pipeline.py -s
