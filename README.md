@@ -40,8 +40,12 @@ dbt deps
 Generate own .env files with relevant database access config to postgres
 
 ### 2. Run pipeline
+
+The csv files should be in the root directory of the project. We can run a different csv file by passing the csv name to the pipeline.py file.
+
 ```bash
-poetry run python dbt_project/pipeline.py
+cd dbt_project
+poetry run python pipeline.py "Data Engineer Challenge_input.csv"
 ```
 ### 3. Generate dbt docs
 
