@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 import sys
-import inspect
 from ingest.csv_to_postgres import ingest_csv_to_postgres
 import subprocess
 import argparse
