@@ -5,8 +5,8 @@ with source as (
 )
 
 select
-sum(turnover_sum) as total_turnover,
-venue_code
+venue_code,
+sum(turnover_sum) as total_turnover
 from source
 group by venue_code
-
+order by venue_code

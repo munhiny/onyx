@@ -10,3 +10,4 @@ venue_code,
 sum(gmp_sum) as total_revenue
 from source
 group by egm_description, venue_code 
+order by egm_description, venue_code

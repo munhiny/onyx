@@ -10,3 +10,4 @@ sum(turnover_sum) as total_turnover,
 sum(gmp_sum) as total_revenue
 from source
 group by bus_date
+order by bus_date
