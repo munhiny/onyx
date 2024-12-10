@@ -27,17 +27,27 @@ Navigate to the project directory:
 ```bash
 cd onyx
 ```
-
-Install dependencies:
-```bash
-poetry install
-```
-Install dbt Dependencies
+Install dependencies anddbt Dependencies
 ```bash
 cd dbt_project
+poetry install
 dbt deps
 ```
-Generate own .env files with relevant database access config to postgres
+Generate own .env files with relevant database access config to postgres and place in root directory
+
+```bash
+touch .env
+```
+
+Example `.env` file:
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=onyx
+DB_USER=
+DB_PASSWORD=
+```
+
 
 ### 2. Run pipeline
 
@@ -45,7 +55,7 @@ The csv files should be in the root directory of the project. We can run a diffe
 
 ```bash
 cd dbt_project
-poetry run python pipeline.py "Data Engineer Challenge_input.csv"
+poetry run python pipeline.py -f "Data Engineer Challenge_input.csv"
 ```
 ### 3. Generate dbt docs
 
