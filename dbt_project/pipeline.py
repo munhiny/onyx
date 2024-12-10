@@ -28,15 +28,44 @@ def run_pipeline(csv_name: str) -> None:
     subprocess.run(["dbt", "build", "--target", "gold", "-s", "+tag:gold", "--exclude-resource-types", "test"])
 # subprocess.run(["dbt", "compile"])
 
+def generate_docs():
+    """Generate dbt documentation"""
+    try:
+        subprocess.run(["dbt", "docs", "generate", "--target", "gold"], check=True)
+        print("Documentation generated successfully!")
+    except subprocess.CalledProcessError as e:
+        print(f"Error generating documentation: {e}")
+        sys.exit(1)
+
+def serve_docs():
+    """Serve dbt documentation"""
+    try:
+        subprocess.run(["dbt", "docs", "serve", "--target", "gold"], check=True)
+        print("Documentation server started!")
+    except subprocess.CalledProcessError as e:
+        print(f"Error serving documentation: {e}")
+        sys.exit(1)
+
 def main():
-    # Add argument parser
-    parser = argparse.ArgumentParser(description='Process EGM data file')
-    parser.add_argument('--file', '-f', 
-                       default="Data Engineer Challenge_input.csv",
-                       help='Name of the CSV file to process (should be in root directory)')
+    parser = argparse.ArgumentParser(description='Run dbt pipeline')
+    parser.add_argument('-f', '--file', type=str, help='Input CSV file name')
+    parser.add_argument('-g', '--generate-docs', action='store_true', help='Generate dbt documentation')
+    parser.add_argument('-s', '--serve-docs', action='store_true', help='Serve dbt documentation')
     
     args = parser.parse_args()
-    
+
+    if args.generate_docs:
+        generate_docs()
+        return
+
+    if args.serve_docs:
+        serve_docs()
+        return
+
+    if not args.file:
+        print("Please provide an input CSV file using the -f flag")
+        sys.exit(1)
+
     # Load environment variables
     parent_dir = Path(__file__).parent.parent
     load_dotenv(parent_dir / '.env')

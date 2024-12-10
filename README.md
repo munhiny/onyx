@@ -60,13 +60,13 @@ poetry run python pipeline.py -f "Data Engineer Challenge_input.csv"
 ### 3. Generate dbt docs
 
 ```bash
-dbt generate docs --target gold
+poetry run python pipeline.py -g
 ```
 
 serve docs
 
 ```bash
-dbt docs serve --target gold
+poetry run python pipeline.py -s
 ```
 
 ## Data checks implemented
